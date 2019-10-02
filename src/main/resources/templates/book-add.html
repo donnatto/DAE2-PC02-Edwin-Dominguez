@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Nuevo Libro</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+<div class="container">
+    <h3 class="center">Nuevo Libro</h3>
+    <br>
+    <div class="row">
+        <div class="section col s12 l6 offset-l3">
+            <form action="#" method="post"
+                  th:object="${book}"
+                  th:action="@{/books/save}"
+            >
+
+                <div class="input-field">
+                    <label for="id_curso">ISBN</label>
+                    <input type="text" class="class-controller"
+                           id="id_curso"
+                           th:field="*{isbn}"
+                    >
+                </div>
+
+                <div class="input-field">
+                    <label for="nom_curso">Nombre de Curso</label>
+                    <input type="text" class="class-controller"
+                           id="nom_curso"
+                           th:field="*{nom_curso}"
+                    >
+                </div>
+
+                <div class="input-field">
+                    <label for="descripcion_curso">Descripción</label>
+                    <input type="text" class="class-controller"
+                           id="descripcion_curso"
+                           th:field="*{descripcion_curso}"
+                    >
+                </div>
+
+                <button type="submit" class="btn">
+                    Confirmar
+                </button>
+                <a th:href="@{/books}" class="btn red lighten-1">Atras</a>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="/js/materialize.js"></script>
+<script src="/js/init.js"></script>
+</body>
+</html>
