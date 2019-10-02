@@ -23,7 +23,7 @@ public class BookController {
         return "book-add";
     }
 
-    @PostMapping("authos/save")
+    @PostMapping("books/save")
     public String saveBook(Book book, Model model) {
         bookService.create(book);
 
@@ -32,15 +32,15 @@ public class BookController {
         return "redirect:/books";
     }
 
-    @GetMapping("/books/edit/{dni}")
-    public String getBookForUpdate(@PathVariable String dni, Model model) {
-        Book currentBook = bookService.findById(dni);
+    @GetMapping("/books/edit/{isbn}")
+    public String getBookForUpdate(@PathVariable String isbn, Model model) {
+        Book currentBook = bookService.findById(isbn);
         model.addAttribute("book", currentBook);
         return "book-edit";
     }
 
-    @PostMapping("/books/update/{dni}")
-    public String updateBook(@PathVariable String dni, Book book, Model model) {
+    @PostMapping("/books/update/{isbn}")
+    public String updateBook(@PathVariable String isbn, Book book, Model model) {
         bookService.update(book);
 
         List<Book> books = bookService.getAll();
@@ -55,9 +55,9 @@ public class BookController {
         return "books";
     }
 
-    @GetMapping("/athors/delete/{dni}")
-    public String deleteBook(@PathVariable String dni, Model model) {
-        Book currentBook = bookService.findById(dni);
+    @GetMapping("/books/delete/{isbn}")
+    public String deleteBook(@PathVariable String isbn, Model model) {
+        Book currentBook = bookService.findById(isbn);
         if (currentBook != null) {
             bookService.delete(currentBook);
         }
@@ -66,7 +66,5 @@ public class BookController {
         model.addAttribute("books", books);
         return "redirect:/books";
     }
-
-
 
 }

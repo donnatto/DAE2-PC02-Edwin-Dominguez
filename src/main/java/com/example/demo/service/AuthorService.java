@@ -17,7 +17,7 @@ public class AuthorService implements GenericService<Author, String> {
     );
 
     @Override
-    public List getAll() {
+    public List<Author> getAll() {
         return authors;
     }
 

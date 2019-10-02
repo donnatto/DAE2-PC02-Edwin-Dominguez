@@ -13,7 +13,8 @@ import java.util.List;
 public class BookService implements GenericService<Book, String> {
 
     List<Book> books = new ArrayList<>(
-            Arrays.asList(new Book("1234", new ArrayList<Author>() , "Harry Potter","La historia de un mago" , LocalDate.now(), 320, "español")
+            Arrays.asList(new Book("1234", new ArrayList<Author>() , "Harry Potter","La historia de un mago" , LocalDate.now(), 250, "español"),
+                    new Book("1259", new ArrayList<Author>() , "Tokio Blues","La historia de un adolescente" , LocalDate.now(), 320, "español")
                     )
     );
 
@@ -45,7 +46,7 @@ public class BookService implements GenericService<Book, String> {
     @Override
     public Book findById(String isbn) {
         Book book = books.stream()
-                .filter(book1 -> book1.getIsbn() == isbn).findFirst().orElse(null);
+                .filter(b -> b.getIsbn() == isbn).findFirst().orElse(null);
         return book;
     }
 }

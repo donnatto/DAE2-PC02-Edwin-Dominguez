@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>McGill</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+<header>
+    <nav class="red lighten-2" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" href="/" class="brand-logo white-text">McGill</a>
+            <ul class="right">
+                <li><a th:href="@{/books}" class="white-text">Libros</a></li>
+                <li><a th:href="@{/authors}" class="white-text">Autores</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<main>
+    <div class="section">
+        <div th:switch="books" class="container">
+            <div th:case="*" class="row">
+                <div class="col s12 center">
+                    <h4>Lista de Libros</h4>
+                    <br>
+                    <table class="highlight responsive-table">
+                        <thead>
+                        <tr>
+                            <th scope="col">isbn</th>
+                            <th scope="col">Autor</th>
+                            <th scope="col">Titulo</th>
+                            <th scope="col">Resumen</th>
+                            <th scope="col">Publicacion</th>
+                            <th scope="col">N. Pag</th>
+                            <th scope="col">Idioma</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="book : ${books}">
+                            <th scope="row" th:text="${book.isbn}"></th>
+                            <td th:text="${book.author}"></td>
+                            <td th:text="${book.title}"></td>
+                            <td th:text="${book.summary}"></td>
+                            <td th:text="${book.publicationDate}"></td>
+                            <td th:text="${book.numberOfPages}"></td>
+                            <td th:text="${book.language}"></td>
+
+                            <td>
+                                <div>
+                                    <a th:href="@{/books/edit/{isbn}
+                                    (isbn=${book.isbn})}"
+                                       class="waves-effect waves-light btn-small">Editar
+                                    </a>
+                                    <a th:href="@{/books/delete/{isbn}
+                                (isbn=${book.isbn})}"
+                                       class="waves-effect waves-light btn-small red lighten-1">Eliminar
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

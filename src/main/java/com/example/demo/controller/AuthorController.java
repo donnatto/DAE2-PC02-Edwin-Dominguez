@@ -23,7 +23,7 @@ public class AuthorController {
         return "author-add";
     }
 
-    @PostMapping("authos/save")
+    @PostMapping("authors/save")
     public String saveAuthor(Author author, Model model) {
         authorService.create(author);
 
@@ -55,7 +55,7 @@ public class AuthorController {
         return "authors";
     }
 
-    @GetMapping("/athors/delete/{dni}")
+    @GetMapping("/authors/delete/{dni}")
     public String deleteAuthor(@PathVariable String dni, Model model) {
         Author currentAuthor = authorService.findById(dni);
         if (currentAuthor != null) {
