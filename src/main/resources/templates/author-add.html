@@ -1,10 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Nuevo Autor</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
 <body>
-$END$
+<div class="container">
+    <h3 class="center">Nuevo Autor</h3>
+    <br>
+    <div class="row">
+        <div class="section col s12 l6 offset-l3">
+            <form action="#" method="post"
+                  th:object="${author}"
+                  th:action="@{/authors/save}"
+            >
+
+                <div class="input-field">
+                    <label for="dni">DNI</label>
+                    <input type="text" class="class-controller"
+                           id="dni"
+                           th:field="*{dni}"
+                    >
+                </div>
+
+                <div class="input-field">
+                    <label for="firstName">Nombre</label>
+                    <input type="text" class="class-controller"
+                           id="firstName"
+                           th:field="*{firstName}"
+                    >
+                </div>
+
+                <div class="input-field">
+                    <label for="lastNameFather">Ape. Paterno</label>
+                    <input type="text" class="class-controller"
+                           id="lastNameFather"
+                           th:field="*{lastNameFather}"
+                    >
+                </div>
+
+                <div class="input-field">
+                    <label for="lastNameMother">Ape-Materno</label>
+                    <input type="text" class="class-controller"
+                           id="lastNameMother"
+                           th:field="*{lastNameMother}"
+                    >
+                </div>
+
+                <div class="input-field">
+                    <label for="age">Edad</label>
+                    <input type="number" class="class-controller"
+                           id="age"
+                           th:field="*{age}"
+                    >
+                </div>
+
+                <div class="input-field">
+                    <label for="biography">Biografía</label>
+                    <input type="text" class="class-controller"
+                           id="biography"
+                           th:field="*{biography}"
+                    >
+                </div>
+                <button type="submit" class="btn">
+                    Confirmar
+                </button>
+                <a th:href="@{/authors}" class="btn red lighten-1">Atras</a>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--  Scripts-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>

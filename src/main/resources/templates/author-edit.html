@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Editar Libro</title>
+    <title>Editar Autor</title>
 
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -12,66 +12,66 @@
 </head>
 <body>
 <div class="container">
-    <h3 class="center">Editar Libro</h3>
+    <h3 class="center">Editar Autor</h3>
     <br>
     <div class="row">
         <div class="section col s12 l6 offset-l3">
             <form action="#" method="post"
-                  th:object="${book}"
-                  th:action="@{/books/update/{isbn} (isbn=${book.isbn})}"
+                  th:object="${author}"
+                  th:action="@{/authors/update/{dni} (dni=${author.dni})}"
             >
 
                 <div class="input-field">
-                    <label for="isbn">ISBN</label>
+                    <label for="dni">DNI</label>
                     <input type="text" class="class-controller"
-                           id="isbn" readonly
-                           th:field="*{isbn}"
+                           id="dni" readonly
+                           th:field="*{dni}"
                     >
                 </div>
 
                 <div class="input-field">
-                    <label for="title">Titulo</label>
+                    <label for="firstName">Nombre</label>
                     <input type="text" class="class-controller"
-                           id="title"
-                           th:field="*{title}"
+                           id="firstName"
+                           th:field="*{firstName}"
                     >
                 </div>
 
                 <div class="input-field">
-                    <label for="summary">Resumen</label>
+                    <label for="lastNameFather">Ape. Paterno</label>
                     <input type="text" class="class-controller"
-                           id="summary"
-                           th:field="*{summary}"
+                           id="lastNameFather"
+                           th:field="*{lastNameFather}"
                     >
                 </div>
 
                 <div class="input-field">
-                    <label for="publicationDate">Fecha de Publicacion</label>
-                    <input type="date" class="class-controller"
-                           id="publicationDate"
-                           th:field="*{publicationDate}"
+                    <label for="lastNameMother">Ape.Materno</label>
+                    <input type="text" class="class-controller"
+                           id="lastNameMother"
+                           th:field="*{lastNameMother}"
                     >
                 </div>
 
                 <div class="input-field">
-                    <label for="numberOfPages">N. Paginas</label>
+                    <label for="age">Edad</label>
                     <input type="number" class="class-controller"
-                           id="numberOfPages"
-                           th:field="*{numberOfPages}"
+                           id="age"
+                           th:field="*{age}"
                     >
                 </div>
 
                 <div class="input-field">
-                    <label for="language">Idioma</label>
+                    <label for="biography">Biografía</label>
                     <input type="text" class="class-controller"
-                           id="language"
-                           th:field="*{language}"
+                           id="biography"
+                           th:field="*{biography}"
                     >
                 </div>
                 <button type="submit" class="btn">
-                    Editar Libro
+                    Editar Autor
                 </button>
-                <a th:href="@{/books}" class="btn red lighten-1">Atras</a>
+                <a th:href="@{/authors}" class="btn red lighten-1">Atras</a>
 
             </form>
         </div>

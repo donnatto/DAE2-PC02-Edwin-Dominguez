@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Nuevo Libro</title>
+    <title>Editar Libro</title>
 
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -12,19 +12,19 @@
 </head>
 <body>
 <div class="container">
-    <h3 class="center">Nuevo Libro</h3>
+    <h3 class="center">Editar Libro</h3>
     <br>
     <div class="row">
         <div class="section col s12 l6 offset-l3">
             <form action="#" method="post"
                   th:object="${book}"
-                  th:action="@{/books/save}"
+                  th:action="@{/books/update/{isbn} (isbn=${book.isbn})}"
             >
 
                 <div class="input-field">
                     <label for="isbn">ISBN</label>
                     <input type="text" class="class-controller"
-                           id="isbn"
+                           id="isbn" readonly
                            th:field="*{isbn}"
                     >
                 </div>
@@ -48,14 +48,14 @@
                 <div class="input-field">
                     <label for="publicationDate">Fecha de Publicacion</label>
                     <input type="date" class="class-controller"
-                           id="publicationDate"
+                           id="publicationDate" placeholder="Fecha"
                            th:field="*{publicationDate}"
                     >
                 </div>
 
                 <div class="input-field">
                     <label for="numberOfPages">N. Paginas</label>
-                    <input type="text" class="class-controller"
+                    <input type="number" class="class-controller"
                            id="numberOfPages"
                            th:field="*{numberOfPages}"
                     >
@@ -69,7 +69,7 @@
                     >
                 </div>
                 <button type="submit" class="btn">
-                    Confirmar
+                    Editar Libro
                 </button>
                 <a th:href="@{/books}" class="btn red lighten-1">Atras</a>
 

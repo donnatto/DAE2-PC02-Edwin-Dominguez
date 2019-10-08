@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Editar Libro</title>
+    <title>Agregar Autor de Libro</title>
 
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -12,13 +12,13 @@
 </head>
 <body>
 <div class="container">
-    <h3 class="center">Editar Libro</h3>
+    <h3 class="center">Agregar Autor de Libro</h3>
     <br>
     <div class="row">
         <div class="section col s12 l6 offset-l3">
             <form action="#" method="post"
                   th:object="${book}"
-                  th:action="@{/books/update/{isbn} (isbn=${book.isbn})}"
+                  th:action="@{/books/saveauthor/{isbn} (isbn=${book.isbn})}"
             >
 
                 <div class="input-field">
@@ -32,44 +32,22 @@
                 <div class="input-field">
                     <label for="title">Titulo</label>
                     <input type="text" class="class-controller"
-                           id="title"
+                           id="title" readonly
                            th:field="*{title}"
                     >
                 </div>
 
                 <div class="input-field">
-                    <label for="summary">Resumen</label>
-                    <input type="text" class="class-controller"
-                           id="summary"
-                           th:field="*{summary}"
-                    >
+                    <label for="author">Autor</label>
+                    <select th:switch="${authors}" id="author" >
+                        <option value="" disabled selected>Selecciona el autor</option>
+                        <option th:each="author: ${authors}" th:value="*{author}" th:text="${author.firstName} + ' ' + ${author.lastNameFather}"></option>
+                    </select>
                 </div>
 
-                <div class="input-field">
-                    <label for="publicationDate">Fecha de Publicacion</label>
-                    <input type="date" class="class-controller"
-                           id="publicationDate"
-                           th:field="*{publicationDate}"
-                    >
-                </div>
 
-                <div class="input-field">
-                    <label for="numberOfPages">N. Paginas</label>
-                    <input type="number" class="class-controller"
-                           id="numberOfPages"
-                           th:field="*{numberOfPages}"
-                    >
-                </div>
-
-                <div class="input-field">
-                    <label for="language">Idioma</label>
-                    <input type="text" class="class-controller"
-                           id="language"
-                           th:field="*{language}"
-                    >
-                </div>
                 <button type="submit" class="btn">
-                    Editar Libro
+                    Confirmar
                 </button>
                 <a th:href="@{/books}" class="btn red lighten-1">Atras</a>
 
@@ -79,6 +57,8 @@
 </div>
 
 <!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="/js/init.js"></script>
 </body>
 </html>

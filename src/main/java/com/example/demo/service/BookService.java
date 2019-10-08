@@ -45,8 +45,8 @@ public class BookService implements GenericService<Book, String> {
 
     @Override
     public Book findById(String isbn) {
-        Book book = books.stream()
-                .filter(b -> b.getIsbn() == isbn).findFirst().orElse(null);
-        return book;
+        return books.stream()
+                .filter(b -> b.getIsbn().equals(isbn)).findFirst().orElse(null);
     }
+
 }

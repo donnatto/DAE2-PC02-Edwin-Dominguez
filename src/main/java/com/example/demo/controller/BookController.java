@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.Author;
 import com.example.demo.model.Book;
+import com.example.demo.service.AuthorService;
 import com.example.demo.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,13 +19,16 @@ public class BookController {
     @Autowired
     BookService bookService;
 
+    @Autowired
+    AuthorService authorService;
+
     @GetMapping("/books/add")
     public String addBook(Model model) {
         model.addAttribute("book", new Book());
         return "book-add";
     }
 
-    @PostMapping("books/save")
+    @PostMapping("/books/save")
     public String saveBook(Book book, Model model) {
         bookService.create(book);
 
@@ -37,6 +42,21 @@ public class BookController {
         Book currentBook = bookService.findById(isbn);
         model.addAttribute("book", currentBook);
         return "book-edit";
+    }
+
+    @GetMapping("/books/addauthor/{isbn}")
+    public String getBookForAuthorSave(@PathVariable String isbn, Model model) {
+        Book currentBook = bookService.findById(isbn);
+        model.addAttribute("book", currentBook);
+        List<Author> authors = authorService.getAll();
+        model.addAttribute("authors", authors);
+        return "book-add-author";
+    }
+
+    @PostMapping("/books/saveauthor/{isbn}")
+    public String saveAuthor(@PathVariable String isbn, Book book, Model model) {
+        bookService.update(book);
+        return "redirect:/books";
     }
 
     @PostMapping("/books/update/{isbn}")

@@ -43,10 +43,8 @@ public class AuthorService implements GenericService<Author, String> {
 
     @Override
     public Author findById(String dni) {
-        Author author = authors.stream()
-                .filter(a -> a.getDni() == dni).findFirst().orElse(null);
-        return author;
-
+        return authors.stream()
+                .filter(a -> a.getDni().equals(dni)).findFirst().orElse(null);
     }
 
 }

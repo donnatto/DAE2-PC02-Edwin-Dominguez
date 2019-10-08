@@ -23,7 +23,7 @@ public class AuthorController {
         return "author-add";
     }
 
-    @PostMapping("authors/save")
+    @PostMapping("/authors/save")
     public String saveAuthor(Author author, Model model) {
         authorService.create(author);
 

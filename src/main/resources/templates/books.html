@@ -27,6 +27,9 @@
             <div th:case="*" class="row">
                 <div class="col s12 center">
                     <h4>Lista de Libros</h4>
+                    <div class="row center">
+                        <a th:href="@{/books/add}" class="waves-effect waves-light btn">Añadir Libros</a>
+                    </div>
                     <br>
                     <table class="highlight responsive-table">
                         <thead>
@@ -43,7 +46,12 @@
                         <tbody>
                         <tr th:each="book : ${books}">
                             <th scope="row" th:text="${book.isbn}"></th>
-                            <td th:text="${book.author}"></td>
+                            <td>
+                                <span th:text="${book.author}"></span>
+                                <a th:href="@{books/addauthor/{isbn} (isbn=${book.isbn})}">
+                                    <span class="new badge red">add</span>
+                                </a>
+                            </td>
                             <td th:text="${book.title}"></td>
                             <td th:text="${book.summary}"></td>
                             <td th:text="${book.publicationDate}"></td>

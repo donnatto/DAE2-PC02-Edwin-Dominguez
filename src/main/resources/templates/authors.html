@@ -23,33 +23,42 @@
 </header>
 <main>
     <div class="section">
-        <div th:switch="cursos" class="container">
+        <div th:switch="authors" class="container">
             <div th:case="*" class="row">
                 <div class="col s12 center">
-                    <h4>Listado de Cursos</h4>
+                    <h4>Lista de Autores</h4>
+                    <div class="row center">
+                        <a th:href="@{/authors/add}" class="waves-effect waves-light btn">Nuevo Autor</a>
+                    </div>
                     <br>
                     <table class="highlight responsive-table">
                         <thead>
                         <tr>
-                            <th scope="col">id</th>
-                            <th scope="col">Curso</th>
-                            <th scope="col">Descripción</th>
+                            <th scope="col">DNI</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Ape. Paterno</th>
+                            <th scope="col">Ape. Materno</th>
+                            <th scope="col">Edad</th>
+                            <th scope="col">Biografía</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="curso : ${cursos}">
-                            <th scope="row" th:text="${curso.id_curso}"></th>
-                            <td th:text="${curso.nom_curso}"></td>
-                            <td th:text="${curso.descripcion_curso}"></td>
+                        <tr th:each="author : ${authors}">
+                            <th scope="row" th:text="${author.dni}"></th>
+                            <td th:text="${author.firstName}"></td>
+                            <td th:text="${author.lastNameFather}"></td>
+                            <td th:text="${author.lastNameMother}"></td>
+                            <td th:text="${author.age}"></td>
+                            <td th:text="${author.biography}"></td>
 
                             <td>
                                 <div>
-                                    <a th:href="@{/cursos/edit/{id_curso}
-                                    (id_curso=${curso.id_curso})}"
+                                    <a th:href="@{/authors/edit/{dni}
+                                    (dni=${author.dni})}"
                                        class="waves-effect waves-light btn-small">Editar
                                     </a>
-                                    <a th:href="@{/cursos/delete/{id_curso}
-                                (id_curso=${curso.id_curso})}"
+                                    <a th:href="@{/authors/delete/{dni}
+                                (dni=${author.dni})}"
                                        class="waves-effect waves-light btn-small red lighten-1">Eliminar
                                     </a>
                                 </div>

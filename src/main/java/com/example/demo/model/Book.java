@@ -3,6 +3,7 @@ package com.example.demo.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -15,7 +16,10 @@ public class Book {
     private List<Author> author;
     private String title;
     private String summary;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate publicationDate;
+
     private int numberOfPages;
     private String language;
 
